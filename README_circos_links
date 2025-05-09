@@ -1,0 +1,320 @@
+for ( i in 1:dim(intra_cons.links)[1]){
+  if(abs(as.numeric(intra_cons.links$pos2[i])-as.numeric(intra_cons.links$pos1[i])) >5  & as.numeric(gsub("LG ", "", intra_cons.links$chr1[i])) == as.numeric(gsub("PS_chr", "", intra_cons.links$ann1[i])) & as.numeric(gsub("LG ", "", intra_cons.links$chr2[i])) == as.numeric(gsub("PS_chr", "", intra_cons.links$ann2[i]))){
+		cat(i, "\n")}}
+2427 		# gap between consecutive markers in the map. could be artifact of the consensus builder
+6925 		# gap between consecutive markers in the map. could be artifact of the consensus builder 
+13656  		# gap between consecutive markers in the map. could be artifact of the consensus builder
+13677		# betweeen the two markers are ~65 markers from two unplaced scaffolds
+
+## these are markers assigned to the same LG (that's given by the fact that they are in intra_cons.links), separated by more than 5cM, but whose annotation is the same among the two markers in the pair AND it's the same chromosome as the LG (because chr1 and chr2 are the same for being part of intra_cons.links):
+### they will be colored dark grey
+
+#
+> intra_cons.links[(2427-1):(2427+1),]
+     chr1   pos1      marker1     ann1 chr2   pos2      marker2     ann2
+2427 LG 2 85.693 AX-117417494 PS_chr02 LG 2 85.693 AX-600100134 PS_chr02
+2428 LG 2 85.693 AX-600100134 PS_chr02 LG 2 90.871 AX-605658872 PS_chr02
+2429 LG 2 90.871 AX-605658872 PS_chr02 LG 2 90.871 AX-387860822 PS_chr02
+
+$ grep -5 AX-600100134 consensus_LGs_chr.tsv
+2       AX-602007678    85.693  94.091  NA      PS_chr02
+2       AX-600821414    85.693  94.091  NA      PS_chr02
+2       AX-601618079    85.693  94.091  NA      PS_chr02
+2       AX-388471077    85.693  94.091  NA      PS_chr02
+2       AX-117417494    85.693  94.091  NA      PS_chr02
+2       AX-600100134    85.693  94.091  NA      PS_chr02
+2       AX-605658872    90.871  94.091  90.279  PS_chr02
+2       AX-387860822    90.871  NA      90.279  PS_chr02
+2       AX-600822030    90.871  NA      90.279  PS_chr02
+2       AX-600808684    90.871  NA      90.279  PS_chr02
+2       AX-600822416    91.238  NA      90.646  PS_chr02
+
+#######
+# just a gap between consecutive markers in the map, seems to be related to the consensus builder shifting from a string of markers from one map and transitioning to a string of markers from the other map
+#######
+
+#
+> intra_cons.links[(6925-1):(6925+1),]
+      chr1   pos1      marker1     ann1  chr2   pos2      marker2     ann2
+6935 LG 11 81.546 AX-602062935 PS_chr11 LG 11  81.64 AX-605747975 PS_chr11
+6936 LG 11  81.64 AX-605747975 PS_chr11 LG 11 90.862 AX-601592434 PS_chr11
+6937  LG 3      0 AX-612328876 PS_chr03  LG 3      0 AX-388016507 PS_chr03 
+
+$ grep -5 AX-605747975 consensus_LGs_chr.tsv
+11      AX-601192669    81.546  NA      79.546  PS_chr11
+11      AX-601184508    81.546  NA      79.546  PS_chr11
+11      AX-601185038    81.546  NA      79.546  PS_chr11
+11      AX-601184688    81.546  NA      79.546  PS_chr11
+11      AX-602062935    81.546  NA      79.546  PS_chr11
+11      AX-605747975    81.64   NA      79.64   PS_chr11
+11      AX-601592434    90.862  90.862  NA      PS_chr11
+12      AX-600016215    0       0       NA      PS_chr12
+12      AX-601667231    0       0       NA      PS_chr12
+12      AX-601884139    2.542   NA      0       PS_chr12
+12      AX-599992512    2.641   NA      0.099   PS_chr12
+
+#######
+# similar to above; actually in this case the second marker in the pair is the last of the LG, so there's not much to "hold on to"
+#######
+
+#
+> intra_cons.links[(13656-1):(13656+1),]
+      chr1    pos1      marker1       ann1 chr2    pos2      marker2       ann2
+13676 LG 7 105.777 AX-389055315   PS_chr07 LG 7 105.777 AX-601718126   PS_chr07
+13677 LG 7 105.777 AX-601718126   PS_chr07 LG 7 123.581 AX-611748791   PS_chr07
+13679 LG 3  34.831 AX-613006623 PS_sUP0082 LG 3  34.831 AX-606373099 PS_sUP0082
+
+$ grep -5 AX-601718126 consensus_LGs_chr.tsv
+7       AX-601718681    105.777 NA      104.824 PS_chr07
+7       AX-611177156    105.777 NA      104.824 PS_chr07
+7       AX-611184405    105.777 NA      104.824 PS_chr07
+7       AX-601569903    105.777 NA      104.824 PS_chr07
+7       AX-389055315    105.777 NA      104.824 PS_chr07
+7       AX-601718126    105.777 NA      104.824 PS_chr07
+7       AX-611748791    123.581 123.581 NA      PS_chr07
+8       AX-599761503    0       0       NA      PS_chr08
+8       AX-606014860    0       0.265   0       PS_chr08
+8       AX-599765303    0.092000000000013       NA      0.093   PS_chr08
+8       AX-599764585    0.092000000000013       NA      0.093   PS_chr08
+
+#######
+# similar to above. last two markers of the LG, changing mother map. might be borderline to keep the second one.
+#######
+
+#
+> intra_cons.links[(13677-1):(13677+1),]
+      chr1 pos1      marker1     ann1 chr2 pos2      marker2     ann2
+13699 LG 4 3.41 AX-601646102 PS_chr04 LG 4 3.41 AX-389732661 PS_chr04
+13700 LG 4 3.41 AX-389732661 PS_chr04 LG 4 8.65 AX-389309357 PS_chr04
+13701 LG 4 8.65 AX-389309357 PS_chr04 LG 4 8.65 AX-602129663 PS_chr04
+
+$ grep -B70 AX-389309357 consensus_LGs_chr.tsv
+4       AX-389732661    3.41    NA      3.41    PS_chr04
+4       AX-602563889    6.692   NA      6.692   PS_sUP0014
+4       AX-601708462    6.896   NA      6.896   PS_sUP0014
+4       AX-601708516    6.987   NA      6.987   PS_sUP0014
+[...63 lines with markers from mostly PS_sUP0014, a couple from PS_sUP0205)
+4       AX-601326469    8.545   NA      8.637   PS_sUP0014
+4       AX-612751939    8.545   NA      8.637   PS_sUP0014
+4       AX-601326769    8.65    3.754   8.747   PS_sUP0205
+4       AX-389309357    8.65    4.621   NA      PS_chr04
+
+#######
+# two markers in LG4 separated by a bunch of markers inserted into LG4 from an unplaced chromosome. in the Figure it's visible how there's light grey inside the dark grey parabola
+#######
+
+##################
+##################
+##################
+
+for ( i in 1:dim(intra_cons.links)[1]){
+  if(abs(as.numeric(intra_cons.links$pos2[i])-as.numeric(intra_cons.links$pos1[i])) >5  & as.numeric(gsub("LG ", "", intra_cons.links$chr1[i])) != as.numeric(gsub("PS_chr", "", intra_cons.links$ann1[i])) & intra_cons.links$ann1[i] == intra_cons.links$ann2[i]){
+		cat(i, "\n")}}
+4177			# two markers in LG4 annotated as PS_chr09.
+5599 			# two markers in LG3 annotated as PS_chr11.
+8658 			# two markers in LG9 annotated as PS_chr03.
+16587			# two markers in LG5 annotated as PS_chr12.	
+
+## these are markers assigned to the same LG (that's given by the fact that they are in "intra_cons.links"), separated by more than 5cM, but whose annotation is the same among the two markers in the pair BUT NOT the same chromosome as the LG:
+### they will be colored red
+
+#
+> intra_cons.links[(4177-1):(4177+1),]
+     chr1   pos1      marker1     ann1 chr2    pos2      marker2     ann2
+4182 LG 4 23.682 AX-601875139 PS_chr09 LG 4  23.682 AX-601215943 PS_chr09
+4183 LG 4 23.682 AX-601215943 PS_chr09 LG 4 114.894 AX-600055819 PS_chr09
+4186 LG 9  2.085 AX-600438052 PS_chr09 LG 9   2.085 AX-601714439 PS_chr09
+
+$ grep -5 AX-601215943 consensus_LGs_chr.tsv
+4       AX-599460881    23.682  14.488  NA      PS_chr06
+4       AX-601020543    23.682  14.488  NA      PS_chr08
+4       AX-605683582    23.682  14.488  NA      PS_chr08
+4       AX-601649940    23.682  14.488  NA      PS_chr09
+4       AX-601875139    23.682  14.488  NA      PS_chr09
+4       AX-601215943    23.682  14.488  NA      PS_chr09
+4       AX-600376749    23.813  14.488  26.15   PS_chr04
+4       AX-605559439    24.059  NA      26.396  PS_chr04
+4       AX-601605226    24.516  14.851  NA      PS_chr04
+4       AX-600396555    24.516  15.544  26.853  PS_chr04
+4       AX-600377871    24.607  NA      26.944  PS_chr04
+
+$ grep -5 AX-600055819 consensus_LGs_chr.tsv
+4       AX-600289031    114.802 97.53   NA      PS_chr04
+4       AX-389589193    114.802 97.53   114.802 PS_chr04
+4       AX-601930620    114.802 97.53   NA      PS_chr04
+4       AX-601606455    114.802 97.53   114.802 PS_chr04
+4       AX-388333040    114.894 NA      114.894 PS_chr04
+4       AX-600055819    114.894 NA      114.894 PS_chr09
+4       AX-601602706    114.894 NA      114.894 PS_chr04
+4       AX-600243667    115.533 98.261  NA      PS_sUP0642
+4       AX-601920169    115.533 98.261  NA      PS_sUP0642
+5       AX-601970517    0       0       NA      PS_chr05
+5       AX-600581539    0       0       0       PS_chr05
+
+$ grep '^4' consensus_LGs_chr.tsv | grep PS_chr09
+4       AX-601649940    23.682  14.488  NA      PS_chr09
+4       AX-601875139    23.682  14.488  NA      PS_chr09
+4       AX-601215943    23.682  14.488  NA      PS_chr09
+4       AX-600055819    114.894 NA      114.894 PS_chr09
+
+#######
+# two markers in LG4 annotated as PS_chr09. the first is part of a redundant set of 3 markers.
+#######
+
+#
+> intra_cons.links[(5599-1):(5599+1),]
+      chr1    pos1      marker1     ann1  chr2    pos2      marker2     ann2
+5606  LG 9 106.799 AX-605393286 PS_chr09  LG 9 106.799 AX-599698024 PS_chr09
+5609  LG 3   11.52 AX-601700268 PS_chr11  LG 3  50.776 AX-602169377 PS_chr11
+5611 LG 11       0 AX-599512202 PS_chr11 LG 11       0 AX-388290165 PS_chr11
+
+$ grep -5 AX-601700268 consensus_LGs_chr.tsv
+3       AX-601430471    11.52   13.73   NA      PS_chr03
+3       AX-600683428    11.52   13.73   NA      PS_chr03
+3       AX-600879644    11.52   13.73   NA      PS_chr03
+3       AX-614117668    11.52   13.73   NA      PS_chr07
+3       AX-601036961    11.52   13.73   NA      PS_chr07
+3       AX-601700268    11.52   13.73   NA      PS_chr11
+3       AX-613840760    11.52   13.73   NA      PS_chr03
+3       AX-389488900    11.52   13.73   NA      PS_chr03
+3       AX-601671581    11.52   13.73   NA      PS_chr03
+3       AX-117398148    12.002  NA      11.733  PS_chr03
+3       AX-601668412    12.002  NA      11.733  PS_chr03
+
+$ grep -5 AX-602169377 consensus_LGs_chr.tsv
+3       AX-612797533    50.776  NA      50.335  PS_chr03
+3       AX-601394325    50.776  NA      50.335  PS_chr03
+3       AX-602092696    50.776  NA      50.335  PS_chr03
+3       AX-601392467    50.776  NA      50.335  PS_chr03
+3       AX-602092681    50.776  NA      50.335  PS_chr03
+3       AX-602169377    50.776  NA      50.335  PS_chr11
+3       AX-601523623    50.776  NA      50.335  PS_chr03
+3       AX-599630120    50.776  NA      50.335  PS_chr03
+3       AX-602297455    50.776  NA      50.335  PS_chr03
+3       AX-602099007    50.776  NA      50.335  PS_chr03
+3       AX-601396390    50.776  NA      50.335  PS_chr03
+
+#######
+# two markers in LG3 annotated as PS_chr11. the first is part of a redundant set of markers annotated in several chrs.
+#######
+
+#
+> intra_cons.links[(8658-1):(8658+1),]
+     chr1             pos1      marker1     ann1 chr2             pos2      marker2     ann2
+8669 LG 4           23.682 AX-601609617 PS_chr03 LG 4           23.682 AX-612811964 PS_chr03
+8671 LG 9           26.599 AX-602087931 PS_chr03 LG 9           36.436 AX-605950215 PS_chr03
+8673 LG 3 2.65300000000001 AX-389402247 PS_chr08 LG 3 2.65300000000001 AX-606174090 PS_chr08
+
+$ grep -1 AX-602087931 consensus_LGs_chr.tsv
+9       AX-606650269    25.315  NA      24.038  PS_chr09
+9       AX-602087931    26.599  26.035  NA      PS_chr03
+9       AX-606663211    26.599  26.035  NA      PS_chr09
+
+$ grep -1 AX-605950215 consensus_LGs_chr.tsv
+9       AX-599937499    36.226  NA      34.949  PS_chr09
+9       AX-605950215    36.436  38.28   NA      PS_chr03
+9       AX-599964413    36.436  38.28   NA      PS_chr09
+
+#######
+# two markers in LG9 annotated as PS_chr03.
+#######
+
+#
+> intra_cons.links[(16587-1):(16587+1),]
+       chr1   pos1      marker1     ann1  chr2   pos2      marker2     ann2
+16612  LG 5 111.78 AX-602437160 PS_chr05  LG 5 111.78 AX-601673558 PS_chr05
+16614  LG 5  6.436 AX-612731906 PS_chr12  LG 5 56.722 AX-600801827 PS_chr12
+16617 LG 12      0 AX-600016215 PS_chr12 LG 12      0 AX-601667231 PS_chr12
+
+$ grep -5 AX-612731906 consensus_LGs_chr.tsv
+5       AX-611617566    5.243   NA      5.243   PS_chr05
+5       AX-599827847    5.281   6.239   NA      PS_chr05
+5       AX-611617719    5.281   6.239   NA      PS_chr05
+5       AX-600332816    6.436   7.394   6.436   PS_chr05
+5       AX-600332638    6.436   NA      6.436   PS_chr05
+5       AX-612731906    6.436   NA      6.436   PS_chr12
+5       AX-389607971    7.704   NA      7.704   PS_chr05
+5       AX-388265926    7.704   NA      7.704   PS_chr05
+5       AX-388433284    7.822   8.78    NA      PS_chr05
+5       AX-601568531    7.822   8.78    NA      PS_chr05
+5       AX-601568534    7.822   8.78    NA      PS_chr05
+
+$ grep -5 AX-600801827 consensus_LGs_chr.tsv
+5       AX-600885988    56.722  52.575  NA      PS_chr05
+5       AX-601616495    56.722  52.575  NA      PS_chr05
+5       AX-600885794    56.722  52.575  NA      PS_chr05
+5       AX-600885773    56.722  52.575  NA      PS_chr05
+5       AX-602020107    56.722  52.575  NA      PS_chr05
+5       AX-600801827    56.722  NA      57.776  PS_chr12
+5       AX-606207000    57.363  NA      58.417  PS_chr05
+5       AX-602019112    57.364  NA      58.418  PS_chr05
+5       AX-601620122    57.639  52.575  58.693  PS_chr05
+5       AX-389189016    57.639  52.575  58.693  PS_chr05
+5       AX-387978206    57.639  52.575  58.693  PS_chr05
+
+$ grep '^5' consensus_LGs_chr.tsv | grep PS_chr12
+5       AX-612731906    6.436   NA      6.436   PS_chr12
+5       AX-600801827    56.722  NA      57.776  PS_chr12
+
+#######
+# the two markers in LG5 annotated as PS_chr12.
+#######
+
+##################
+##################
+##################
+
+> for ( i in 1:dim(inter_cons.links)[1]){
++     if(inter_cons.links$ann1[i] != inter_cons.links$ann2[i]){
++         cat(i, "\n")}}
+> 
+
+#######
+# this shows that all pairs split between two different LGs are annotated as the same chr
+#######
+
+##################
+##################
+##################
+
+for (i in 1:nrow(inter_cons.links)) {
+  
+  # First, check if ann1 and ann2 are both PS_chr
+  ann1_is_chr <- grepl("^PS_chr", inter_cons.links$ann1[i])
+  ann2_is_chr <- grepl("^PS_chr", inter_cons.links$ann2[i])
+  
+  if (ann1_is_chr & ann2_is_chr) {
+    
+    # Only if safe, do the numeric conversion
+    chr1_num <- as.numeric(gsub("LG ", "", inter_cons.links$chr1[i]))
+    ann1_num <- as.numeric(gsub("PS_chr", "", inter_cons.links$ann1[i]))
+    
+    chr2_num <- as.numeric(gsub("LG ", "", inter_cons.links$chr2[i]))
+    ann2_num <- as.numeric(gsub("PS_chr", "", inter_cons.links$ann2[i]))
+    
+    if (chr1_num == ann1_num | chr2_num == ann2_num) {
+      cat(i, "\n")
+    }
+    
+  }
+}
+1 
+2 
+5 
+8 
+9 
+11 
+12 
+18 
+19 
+21 
+22 
+23 
+24 
+27 
+29
+
+#######
+# these are pairs where one of the markers is assigned to the "correct" LG, and the other is not. For example, chr1-ann1-chr2-ann2 could be LG1-PS_chr01-LG4-PS_chr01. these are colored in orange.
+# the ones that don't satisfy that condition are markers annotated to a third chromosome, not the one corresponding to either LG. for example, LG4-PS_chr06-LG5-PS_chr06 (two markers from chr06 which are not in chr06, but also not in chr04 nor chr05, which would be LG5 and LG6 respectively). these are colored in dark blue.
+#######

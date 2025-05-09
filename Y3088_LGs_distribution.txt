@@ -1,0 +1,50 @@
+Y3088_LG1:
+  PS_chr01 PS_sUP0026 PS_sUP0037 PS_sUP1282 PS_sUP2454
+       328          1          1          1          1
+Y3088_LG2:
+  PS_chr02 PS_sUP0018 PS_sUP0034 PS_sUP0094 PS_sUP2364 PS_sUP3551
+       358         14          1          1          1          1
+Y3088_LG3:
+  PS_chr03 PS_sUP0082
+       425          1
+Y3088_LG4:
+  PS_chr04   PS_chr05   PS_chr10 PS_sUP0014 PS_sUP0167 PS_sUP0205 PS_sUP0214 PS_sUP0272 PS_sUP2422
+       387          1          2         14          1          1          1          1          1
+Y3088_LG5:
+  PS_chr09   PS_chr11 PS_sUP0533 PS_sUP1186
+         1        386          1          1
+Y3088_LG6:
+  PS_chr05   PS_chr06   PS_chr12 PS_sUP0015 PS_sUP0057 PS_sUP0058 PS_sUP1630 PS_sUP2632
+       400          1          1          3          1          1          1          1
+Y3088_LG7:
+  PS_chr08 PS_sUP0070 PS_sUP1304 PS_sUP2652
+       436          3          1          1
+Y3088_LG8:
+  PS_chr06   PS_chr12 PS_sUP0046 PS_sUP0665 PS_sUP1082 PS_sUP1156
+       362          1          1          1          1          1
+Y3088_LG9:
+  PS_chr07 PS_sUP0028 PS_sUP0071 PS_sUP0343 PS_sUP1081 PS_sUP1811 PS_sUP2897 PS_sUP6206
+       421          1          1          1          1          1          1          1
+Y3088_LG10:
+  PS_chr09 PS_sUP0013 PS_sUP0016 PS_sUP0017 PS_sUP0019 PS_sUP0020 PS_sUP0031 PS_sUP0137 PS_sUP2139
+       406         15         11          3         13          4          3          1          2
+Y3088_LG11:
+  PS_chr10 PS_sUP0059 PS_sUP0892 PS_sUP1607
+       343          1          1          1
+Y3088_LG12:
+  PS_chr12 PS_sUP0800
+       372          1
+
+
+PS_chr01    LG1
+PS_chr02    LG2
+PS_chr03    LG3
+PS_chr04    LG4
+PS_chr05    LG6
+PS_chr06    LG8
+PS_chr07    LG9
+PS_chr08    LG7
+PS_chr09    LG10
+PS_chr10    LG11
+PS_chr11    LG5
+PS_chr12    LG12

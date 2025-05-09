@@ -1,0 +1,50 @@
+AC1017_strict_LG1:
+  PS_chr01 PS_sUP0026 PS_sUP0037 PS_sUP1738
+       234          3          1          1
+AC1017_strict_LG2:
+PS_chr01 PS_chr02 PS_chr03 PS_chr06 PS_chr07 PS_chr10 PS_chr11 PS_chr12
+       1        1        1        1        1        2      151        2
+AC1017_strict_LG3:
+  PS_chr04 PS_sUP0014 PS_sUP0205 PS_sUP0642
+       208         12          2          1
+AC1017_strict_LG4:
+  PS_chr02   PS_chr09   PS_chr11 PS_sUP0018 PS_sUP0094
+       205          1          1          5          1
+AC1017_strict_LG5:
+  PS_chr03 PS_sUP0082 PS_sUP1027 PS_sUP8534
+       275          1          1          1
+AC1017_strict_LG6:
+PS_chr10
+     213
+AC1017_strict_LG7:
+  PS_chr09 PS_sUP0013 PS_sUP0016 PS_sUP0017 PS_sUP0019 PS_sUP0020 PS_sUP0031 PS_sUP0137 PS_sUP0500 PS_sUP1069 PS_sUP2139
+       190         14          8          3          6          2          1          1          1          1          1
+AC1017_strict_LG8:
+  PS_chr05 PS_sUP0015 PS_sUP0056 PS_sUP0058 PS_sUP1630 PS_sUP5118
+       259          1          1          2          1          1
+AC1017_strict_LG9:
+  PS_chr06 PS_sUP0046 PS_sUP1056 PS_sUP2369
+       227          2          1          1
+AC1017_strict_LG10:
+  PS_chr07 PS_sUP0028 PS_sUP0541 PS_sUP1081 PS_sUP1811
+       257          1          1          1          1
+AC1017_strict_LG11:
+PS_chr07 PS_chr12
+       1      234
+AC1017_strict_LG12:
+  PS_chr08 PS_sUP0070 PS_sUP0177 PS_sUP1304 PS_sUP2652
+       249          2          1          1          1
+
+
+PS_chr01    LG1
+PS_chr02    LG4
+PS_chr03    LG5
+PS_chr04    LG3
+PS_chr05    LG8
+PS_chr06    LG9
+PS_chr07    LG10
+PS_chr08    LG12
+PS_chr09    LG7
+PS_chr10    LG6
+PS_chr11    LG2
+PS_chr12    LG11
