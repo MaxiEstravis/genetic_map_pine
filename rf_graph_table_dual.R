@@ -57,13 +57,11 @@ rf_graph_table_dual <- function(input.seq, main = NULL, mrk.axis = "numbers", la
   
   # Create dual plot with correct scales
   p <- ggplot(df.graph, aes(x, y)) +
-    # Upper triangle: rf (dark blue = low rf, light blue = high rf)
-    geom_tile(aes(fill = rf), data = subset(df.graph, as.numeric(x) < as.numeric(y))) +
-    scale_fill_gradient(low = "darkblue", high = "lightblue", na.value = "white", name = "rf") +
-    ggnewscale::new_scale_fill() +
-    # Lower triangle: LOD (light pink = low LOD, dark red = high LOD)
-    geom_tile(aes(fill = LOD), data = subset(df.graph, as.numeric(x) > as.numeric(y))) +
+    geom_tile(aes(fill = LOD), data = subset(df.graph, as.numeric(x) <= as.numeric(y))) +
     scale_fill_gradient(low = "pink", high = "darkred", na.value = "white", name = "LOD") +
+    ggnewscale::new_scale_fill() +
+    geom_tile(aes(fill = rf), data = subset(df.graph, as.numeric(x) > as.numeric(y))) +
+    scale_fill_gradient(low = "darkblue", high = "lightblue", na.value = "white", name = "rf") +
     theme(axis.text.x = element_text(angle = 90, hjust = 1))
   
   # Labels
@@ -78,7 +76,10 @@ rf_graph_table_dual <- function(input.seq, main = NULL, mrk.axis = "numbers", la
   }
   
   if (mrk.axis == "none") {
-    p <- p + theme(axis.text.x = element_blank(), axis.text.y = element_blank())
+    p <- p + theme(axis.text.x = element_blank(),
+                   axis.text.y = element_blank(),
+                   axis.ticks.x = element_blank(),
+                   axis.ticks.y = element_blank())
   }
   
   if (!is.null(main)) {
@@ -86,6 +87,16 @@ rf_graph_table_dual <- function(input.seq, main = NULL, mrk.axis = "numbers", la
   }
   
   p
+  #return(df.graph)
 }
 
+qload("AC1017_strict_LGs_rec_map.qs")
 
+for (i in c(1, 3:12)) {
+  LG_name <- paste0("LG", i, "_rec_map")
+  rf_graph_table_dual(get(LG_name), mrk.axis = "none")
+  ggsave(filename = paste0("rf_LOD_graph_plots_final/AC1017_LG", i, "_rec_map_rf_LOD.pdf"), width = 210, height = 210, units = "mm")
+}
+
+rf_graph_table_dual(LG2_rec_map_noSus, mrk.axis = "none")
+ggsave(filename = paste0("rf_LOD_graph_plots_final/AC1017_LG2_noSus_rec_map_rf_LOD.pdf"), width = 210, height = 210, units = "mm")
