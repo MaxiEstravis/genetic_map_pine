@@ -1,0 +1,55 @@
+## fetched primers from Table 2, https://link.springer.com/article/10.1007/s00122-003-1312-2/tables/2
+# saved in primers_2003_genetic_map_pine.fasta
+
+gmapl -d Pinsy01_chromosomes -D /cfs/klemming/projects/snic/uppstore2017145/V2/reference/Pinus-sylvestris/v1.0/indices/GMAP/Pinsy01_chromosomes primers_2003_genetic_map_pine.fasta -f psl > primers_2003_vs_Pinsy01_chromosomes.psl
+
+GMAP version 2024-05-20 called with args: gmapl.avx2 -d Pinsy01_chromosomes -D /cfs/klemming/projects/snic/uppstore2017145/V2/reference/Pinus-sylvestris/v1.0/indices/GMAP/Pinsy01_chromosomes primers_2003_genetic_map_pine.fasta -f psl
+Checking compiler assumptions for SSE2: 6B8B4567 327B23C6 xor=59F066A1
+Checking compiler assumptions for SSE4.1: -103 -58 max=198 => compiler zero extends
+Checking compiler options for SSE4.2: 6B8B4567 __builtin_clz=1 __builtin_ctz=0 _mm_popcnt_u32=17 __builtin_popcount=17 
+Finished checking compiler assumptions
+Pre-loading compressed genome (oligos)......done (6,846,963,740 bytes, 1671623 pages, 1.46 sec)
+Looking for genome Pinsy01_chromosomes in directory /cfs/klemming/projects/snic/uppstore2017145/V2/reference/Pinus-sylvestris/v1.0/indices/GMAP/Pinsy01_chromosomes
+Looking for index files in directory /cfs/klemming/projects/snic/uppstore2017145/V2/reference/Pinus-sylvestris/v1.0/indices/GMAP/Pinsy01_chromosomes
+  Pages file is Pinsy01_chromosomes.ref153offsets64pages
+  Pointers file is Pinsy01_chromosomes.ref153offsets64meta
+  Offsets file is Pinsy01_chromosomes.ref153offsets64strm
+  Positions files are Pinsy01_chromosomes.ref153positionsh and Pinsy01_chromosomes.ref153positions
+Offsets compression type: bitpack64
+Allocating memory for ref offset pointers, kmer 15, interval 3...done (134,217,744 bytes, 0.24 sec)
+Allocating memory for ref offsets, kmer 15, interval 3...done (840,726,016 bytes, 1.67 sec)
+Pre-loading ref positions high, kmer 15, interval 3......done (6,086,017,900 bytes, 4.42 sec)
+Pre-loading ref positions, kmer 15, interval 3......done (24,344,071,600 bytes, 4.52 sec)
+Starting alignment
+No paths found for PsUF1_CHS_L
+No paths found for PtTX3_lp3-1_U
+No paths found for PtTX3_lp3-1_L
+No paths found for PtNCS_p14A9_L
+No paths found for PtIPST_pLP2_U
+No paths found for PstASU_APX_U
+No paths found for PstASU_APX_L
+No paths found for PtMTU_lpPAL_U
+No paths found for PsARI_dehydrin_U
+No paths found for PtNCS_HLH1_U
+No paths found for PtNCS_1CA4G_U
+No paths found for PtNCS_1CA4G_L
+No paths found for PsUOU_adhB_U
+No paths found for PsUOU_adhB_L
+No paths found for PsUOU_adhC_U
+No paths found for PsUOU_adhC_L
+No paths found for PsUOU_adhF_L
+No paths found for PsUOU_adhH_U
+No paths found for PsUOU_adhH_L
+No paths found for PtNCS_ptCadA_U
+No paths found for PtNCS_ptCadA_L
+No paths found for PsUMU_plNEab21_U
+No paths found for PsUPS2_PST13_U
+No paths found for PtNCS_4C1C_L
+No paths found for PsUF2_NIR_L
+Processed 46 queries in 38.03 seconds (1.21 queries/sec)
+
+#########
+
+# run closest_SNP.R, which generates closest_snps.tsv
+
+## could be interesting, but there's barely any marker that is in the consensus map, so it's pretty useless. i will keep the files though.
